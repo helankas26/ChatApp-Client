@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="270.0" style="-fx-background-radius: 30; -fx-background-color: #dedede;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ViewChatComponentController">
+   <children>
+      <ImageView fx:id="imgChat" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="5.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../asserts/subscribe_by.png" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="140.0" prefWidth="180.0" style="-fx-background-radius: 30;">
+         <children>
+            <Label fx:id="lblName" layoutX="24.0" layoutY="21.0" prefHeight="28.0" prefWidth="145.0" text="Chat Name">
+               <font>
+                  <Font name="Corbel Bold" size="20.0" />
+               </font>
+            </Label>
+            <StackPane layoutX="1.0" layoutY="26.0">
+               <children>
+                  <ImageView fx:id="imgOnline" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/online.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgOffline" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/offline.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane layoutX="100.0" layoutY="50.0">
+               <children>
+                  <ImageView fx:id="btnEnd" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#endChatOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/end.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btnStart" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#startChatOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts/start.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Pane>
+   </children>
+</HBox>
