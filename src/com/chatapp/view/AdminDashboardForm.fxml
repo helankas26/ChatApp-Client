@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="adminDashboardContext" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.AdminDashboardFormController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="loginContext" prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="600.0" prefWidth="60.0" style="-fx-background-color: #1D232A;">
+               <children>
+                  <Pane layoutX="10.0" layoutY="152.0" prefHeight="298.0" prefWidth="60.0" />
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#chatOnAction" prefHeight="60.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #1D232A;" text="chat">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/chat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" onAction="#userOnAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #1D232A;" text="user">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/user-group.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Pane prefHeight="262.0" prefWidth="60.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="70.0" onAction="#logoutOnAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #1D232A;" text="logout">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="30.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children></VBox>
+            <Pane fx:id="paneMenu" layoutX="60.0" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
+               <children>
+                  <StackPane layoutX="-4.599999904632568" style="-fx-background-color: #242A31;">
+                     <children>
+                        <VBox fx:id="vUser" alignment="BASELINE_CENTER" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
+                           <children>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#viewUserOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Users" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/view_users.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="30.0" onAction="#removeUserOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Remove" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/remove_user.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="vChat" alignment="BASELINE_CENTER" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
+                           <children>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#viewChatOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Chats" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/view_chat.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="30.0" onAction="#createChatOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Create" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/create_chat.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="90.0" onAction="#editChatOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Edit" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/edit_chat.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="210.0" onAction="#subscribeToChatOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Subscribe" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/subscribe_by.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+            </Pane>
+            <Pane layoutX="280.0" prefHeight="40.0" prefWidth="620.0" style="-fx-background-color: #cccccc;">
+               <children>
+                  <Label fx:id="lblDate" layoutX="86.0" layoutY="12.0" text="2023-03-25">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTime" layoutX="500.0" layoutY="11.0" text="08:10:12">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <AnchorPane fx:id="adminMainContext" layoutX="280.0" layoutY="40.0" prefHeight="560.0" prefWidth="620.0" style="-fx-background-color: #EBEBEB;">
+               <children>
+                  <ImageView fx:id="imgAdminMainContext" fitHeight="560.0" fitWidth="620.0" opacity="0.09" pickOnBounds="true">
+                     <image>
+                        <Image url="@../asserts/admin_background.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
