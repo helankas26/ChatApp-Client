@@ -45,7 +45,7 @@ public class Client {
                     try {
                         chatRemote = (ChatRemote) reg.lookup("ChatService");
                     } catch (RemoteException | NotBoundException ex) {
-                        System.out.println("Exception in getting ChatRemote....." + ex.getMessage());
+                        System.out.println("Exception in getting ChatRemote.....\n" + ex.getMessage());
                     }
                 }
             }
@@ -60,7 +60,7 @@ public class Client {
                     try {
                         chatSessionRemote = (ChatSessionRemote) reg.lookup("ChatSessionService");
                     } catch (RemoteException | NotBoundException ex) {
-                        System.out.println("Exception in getting ChatSessionRemote....." + ex.getMessage());
+                        System.out.println("Exception in getting ChatSessionRemote.....\n" + ex.getMessage());
                     }
                 }
             }
@@ -75,7 +75,7 @@ public class Client {
                     try {
                         messageRemote = (MessageRemote) reg.lookup("MessageService");
                     } catch (RemoteException | NotBoundException ex) {
-                        System.out.println("Exception in getting MessageRemote....." + ex.getMessage());
+                        System.out.println("Exception in getting MessageRemote.....\n" + ex.getMessage());
                     }
                 }
             }
@@ -90,7 +90,7 @@ public class Client {
                     try {
                         subscriptionRemote = (SubscriptionRemote) reg.lookup("SubscriptionService");
                     } catch (RemoteException | NotBoundException ex) {
-                        System.out.println("Exception in getting SubscriptionRemote....." + ex.getMessage());
+                        System.out.println("Exception in getting SubscriptionRemote.....\n" + ex.getMessage());
                     }
                 }
             }
@@ -103,9 +103,9 @@ public class Client {
             synchronized (UserRemote.class) {
                 if (userRemote == null) {
                     try {
-                        userRemote = (UserRemote) reg.lookup("SubscriptionService");
+                        userRemote = (UserRemote) reg.lookup("UserService");
                     } catch (RemoteException | NotBoundException ex) {
-                        System.out.println("Exception in getting UserService....." + ex.getMessage());
+                        System.out.println("Exception in getting UserService.....\n" + ex.getMessage());
                     }
                 }
             }
