@@ -185,12 +185,15 @@ public class CreateUserAccountFormController implements Initializable {
     
     private Optional<ButtonType> alert(Alert.AlertType alertType, String title, String contentText) {
         Optional<ButtonType> result = null;
+        
         try {
+            Stage parentStage = (Stage) createAccountContext.getScene().getWindow();
             Alert alert = new Alert(alertType);
             Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
             String iconPath = getClass().getResource("../asserts/view_chat.png").toURI().toString();
             stage.getIcons().add(new Image(iconPath));
             alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(parentStage);
             alert.setTitle(title);
             alert.setHeaderText(null);
             alert.setContentText(contentText);
