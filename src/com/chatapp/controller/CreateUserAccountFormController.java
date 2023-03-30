@@ -91,6 +91,7 @@ public class CreateUserAccountFormController implements Initializable {
                     if (result.isPresent() && result.get() == ButtonType.OK) {
                         setUi("LoginForm");
                     } else {
+                        event.consume();
                         clearFields();
                     }
                 } else {
