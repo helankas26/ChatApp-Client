@@ -68,7 +68,7 @@ public class LoginFormController implements Initializable  {
             
             user = userRemote.login(user);
             
-            if (null != user.getUserId()) {
+            if (null != user && null != user.getUserId()) {
                 changeField(lblUsername, "");
 
                 if (null != user.getPassword()) {
