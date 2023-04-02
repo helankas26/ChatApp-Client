@@ -99,13 +99,14 @@ public class EditChatFormController implements Initializable {
                 chat = chatRemote.getChat(chat);
                       
                 ByteArrayInputStream bais = new ByteArrayInputStream(chat.getAvatar());
+                ImagePattern imagePattern = new ImagePattern(new Image(bais));
                
-                chatIcon.setFill(new ImagePattern(new Image(bais)));
+                chatIcon.setFill(imagePattern);
                 lblName.setText(chat.getName());
                 lblDescription.setText(chat.getDescription());
                 vChat.setVisible(true);
                 
-                editChatIcon.setFill(new ImagePattern(new Image(bais)));
+                editChatIcon.setFill(imagePattern);
                 txtName.setText(chat.getName());
                 txtDescription.setText(chat.getDescription());
                 
