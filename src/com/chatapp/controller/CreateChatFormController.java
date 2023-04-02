@@ -121,8 +121,7 @@ public class CreateChatFormController implements Initializable {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             Optional<String> fileExtension = Optional.ofNullable(image.toString())
                     .filter(f -> f.contains("."))
-                    .map(f -> f.substring(image.toString().lastIndexOf(".") + 1));
-            
+                    .map(f -> f.substring(f.lastIndexOf(".") + 1));
             ImageIO.write(originalImage, fileExtension.get(), baos);
             chat.setAvatar(baos.toByteArray());
         } catch (IOException ex) {
@@ -142,7 +141,7 @@ public class CreateChatFormController implements Initializable {
             System.out.println(ex.getMessage());
         }
         chat.setName(txtName.getText());
-        chat.setDescription(txtDescription.getText());;
+        chat.setDescription(txtDescription.getText());
         
         if (null == chat.getAvatar()) {
             File image = new File(imagePath);
