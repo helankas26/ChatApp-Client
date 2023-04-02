@@ -132,11 +132,13 @@ public class AdminDashboardFormController implements Initializable {
 
     @FXML
     private void viewChatOnAction(ActionEvent event) throws IOException {
+        ViewChatFormController.setContext(adminDashboardContext);
         loadUi("ViewChatForm");
     }
 
     @FXML
     private void editChatOnAction(ActionEvent event) throws IOException {
+        EditChatFormController.setContext(adminDashboardContext);
         loadUi("EditChatForm");
     }
 
@@ -147,6 +149,7 @@ public class AdminDashboardFormController implements Initializable {
 
     @FXML
     private void createChatOnAction(ActionEvent event) throws IOException {
+        CreateChatFormController.setContext(adminDashboardContext);
         loadUi("CreateChatForm");
     }
 

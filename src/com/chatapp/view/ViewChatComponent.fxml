@@ -24,14 +24,14 @@
          <children>
             <Label fx:id="lblName" layoutX="24.0" layoutY="21.0" prefHeight="28.0" prefWidth="145.0" text="Chat Name">
                <font>
-                  <Font name="Corbel Bold" size="20.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <StackPane layoutX="1.0" layoutY="26.0">
                <children>
                   <ImageView fx:id="imgOnline" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../asserts/online.png" />
+                        <Image url="@../asserts/online.gif" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="imgOffline" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
