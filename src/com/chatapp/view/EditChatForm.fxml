@@ -19,7 +19,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="70.0" layoutY="10.0" prefHeight="100.0" prefWidth="480.0">
          <children>
-            <JFXComboBox fx:id="cmbChatList" prefWidth="250.0">
+            <JFXComboBox fx:id="cmbChatList" onAction="#cmbChatListOnAction" prefWidth="250.0" visibleRowCount="3">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
@@ -54,7 +54,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="54.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
-                  <ImageView fitHeight="35.0" fitWidth="35.0" onDragDetected="#chatDeleteOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#chatDeleteOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../asserts/delete.png" />
                      </image>
@@ -86,7 +86,7 @@
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="115.0" layoutY="309.0" onAction="#updateOnAction" prefWidth="250.0" style="-fx-background-color: #c79c02;" text="Update" textFill="#e8dddd">
+            <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="115.0" layoutY="309.0" onAction="#updateOnAction" prefWidth="250.0" style="-fx-background-color: #c79c02;" text="Update" textFill="#e8dddd">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
