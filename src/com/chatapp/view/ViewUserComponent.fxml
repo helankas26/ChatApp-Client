@@ -2,41 +2,45 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="190.0" prefWidth="260.0" style="-fx-background-radius: 30; -fx-background-color: #c5c7c7;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ViewUserComponentController">
+<Pane fx:id="paneUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ViewUserComponentController">
    <children>
-      <Circle fx:id="userIcon" fill="#e3e8ed" onMouseClicked="#imageUploadOnClicked" radius="40.0" stroke="GREY" strokeType="INSIDE">
-         <VBox.margin>
-            <Insets bottom="5.0" top="10.0" />
-         </VBox.margin>
-      </Circle>
-      <Label fx:id="lblUsername" text="Username">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
-      </Label>
-      <Label fx:id="lblNickname" text="Nickname">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
-      </Label>
-      <Label fx:id="lblEmail" text="Email">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
-      </Label>
+      <VBox fx:id="vBoxUser" alignment="TOP_CENTER" layoutX="1.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="260.0" style="-fx-background-radius: 30; -fx-background-color: #c5c7c7;">
+         <children>
+            <Circle fx:id="userIcon" fill="#e3e8ed" radius="40.0" stroke="GREY" strokeType="INSIDE">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="-40.0" />
+               </VBox.margin>
+            </Circle>
+            <Label fx:id="lblUsername" text="Username">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="lblNickname" text="Nickname">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="lblEmail" text="Email">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
    </children>
-</VBox>
+</Pane>

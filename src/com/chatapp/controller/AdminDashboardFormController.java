@@ -127,6 +127,7 @@ public class AdminDashboardFormController implements Initializable {
 
     @FXML
     private void viewUserOnAction(ActionEvent event) throws IOException {
+        ViewUserFormController.setContext(adminDashboardContext);
         loadUi("ViewUserForm");
     }
 
