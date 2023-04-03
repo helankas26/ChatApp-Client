@@ -21,6 +21,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -76,7 +77,6 @@ public class EditChatFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         chatRemote = Client.getChatRemote();
-        chat = new Chat();
         
         try {
             setCmbChatList();
@@ -93,27 +93,31 @@ public class EditChatFormController implements Initializable {
     @FXML
     private void cmbChatListOnAction(ActionEvent event) {
         if (cmbChatList.getValue() != null) {
-            chat.setChatId(cmbChatList.getSelectionModel().getSelectedItem().getChatId());
-            
-            try {
-                chat = chatRemote.getChat(chat);
-                      
+            chat = cmbChatList.getSelectionModel().getSelectedItem();
+                            
+            if (chat.getStatus() == 0) {
                 ByteArrayInputStream bais = new ByteArrayInputStream(chat.getAvatar());
                 ImagePattern imagePattern = new ImagePattern(new Image(bais));
-               
+
                 chatIcon.setFill(imagePattern);
                 lblName.setText(chat.getName());
                 lblDescription.setText(chat.getDescription());
                 vChat.setVisible(true);
-                
+
                 editChatIcon.setFill(imagePattern);
                 txtName.setText(chat.getName());
                 txtDescription.setText(chat.getDescription());
-                
+
                 enableFields();
+            } else {
+                alert(
+                        Alert.AlertType.WARNING,
+                        "Warning",
+                        "Put offline before editing this chat!"
+                );
                 
-            } catch (RemoteException ex) {
-                alert(Alert.AlertType.ERROR, "RemoteException", "Failed!");
+                Platform.runLater(() -> cmbChatList.getSelectionModel().clearSelection());
+                clearFields();
             }
         }
     }
@@ -170,7 +174,7 @@ public class EditChatFormController implements Initializable {
                     
                     if (result.isPresent() && result.get() == ButtonType.OK) {
                         clearFields();
-                    setCmbChatList();
+                        setCmbChatList();
                     } else {
                         event.consume();
                         clearFields();
