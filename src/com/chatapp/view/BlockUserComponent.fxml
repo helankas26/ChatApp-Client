@@ -9,41 +9,53 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="50.4" prefWidth="576.0" spacing="10.0" style="-fx-background-color: #dbdad5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.RemoveUserComponentController">
+<HBox fx:id="hBoxUser" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="564.0" spacing="10.0" style="-fx-background-color: #f0eee6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.BlockUserComponentController">
    <children>
       <Label fx:id="lblId" alignment="CENTER" prefHeight="30.0" prefWidth="35.0" text="#">
          <font>
             <Font name="Corbel Bold" size="20.0" />
          </font>
          <HBox.margin>
-            <Insets left="5.0" right="-5.0" />
+            <Insets left="5.0" />
          </HBox.margin>
       </Label>
-      <Circle fx:id="userIcon" fill="#e3e8ed" onMouseClicked="#imageUploadOnClicked" radius="20.0" stroke="GREY" strokeType="INSIDE" />
+      <Circle fx:id="userIcon" fill="#e3e8ed" radius="20.0" stroke="GREY" strokeType="INSIDE">
+         <HBox.margin>
+            <Insets right="6.0" />
+         </HBox.margin></Circle>
       <Label fx:id="lblUsername" layoutX="65.0" prefHeight="30.0" prefWidth="94.4" text="Username">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <HBox.margin>
+            <Insets right="1.0" />
+         </HBox.margin>
       </Label>
       <Label fx:id="lblNickname" layoutX="65.0" layoutY="20.0" prefHeight="30.0" prefWidth="94.4" text="Nickname">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <HBox.margin>
+            <Insets right="1.0" />
+         </HBox.margin>
       </Label>
-      <Label fx:id="lblEmail" layoutX="221.0" layoutY="20.0" prefHeight="30.0" prefWidth="194.4" text="Email">
+      <Label fx:id="lblEmail" layoutX="221.0" layoutY="20.0" prefHeight="30.0" prefWidth="182.0" text="Email">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
       </Label>
-      <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#removeUserOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#blockUserOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../asserts/delete.png" />
+            <Image url="@../asserts/block.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <HBox.margin>
-            <Insets left="10.0" />
+            <Insets />
          </HBox.margin>
       </ImageView>
    </children>
