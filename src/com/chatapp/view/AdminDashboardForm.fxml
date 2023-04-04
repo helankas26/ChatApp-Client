@@ -90,11 +90,11 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="30.0" onAction="#removeUserOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Remove" textFill="#d5d5d5">
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="30.0" onAction="#blockUserOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Block" textFill="#d5d5d5">
                                  <graphic>
                                     <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../asserts/remove_user.png" />
+                                          <Image url="@../asserts/block_user.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

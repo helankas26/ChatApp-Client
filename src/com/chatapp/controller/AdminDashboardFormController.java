@@ -127,29 +127,35 @@ public class AdminDashboardFormController implements Initializable {
 
     @FXML
     private void viewUserOnAction(ActionEvent event) throws IOException {
+        adminDashboardContext.getChildren().remove(adminMainContext);
         ViewUserFormController.setContext(adminDashboardContext);
         loadUi("ViewUserForm");
     }
 
     @FXML
     private void viewChatOnAction(ActionEvent event) throws IOException {
+        adminDashboardContext.getChildren().remove(adminMainContext);
         ViewChatFormController.setContext(adminDashboardContext);
         loadUi("ViewChatForm");
     }
 
     @FXML
     private void editChatOnAction(ActionEvent event) throws IOException {
+        adminDashboardContext.getChildren().remove(adminMainContext);
         EditChatFormController.setContext(adminDashboardContext);
         loadUi("EditChatForm");
     }
 
     @FXML
-    private void removeUserOnAction(ActionEvent event) throws IOException {
-        loadUi("RemoveUserForm");
+    private void blockUserOnAction(ActionEvent event) throws IOException {
+        adminDashboardContext.getChildren().remove(adminMainContext);
+        BlockUserFormController.setContext(adminDashboardContext);
+        loadUi("BlockUserForm");
     }
 
     @FXML
     private void createChatOnAction(ActionEvent event) throws IOException {
+        adminDashboardContext.getChildren().remove(adminMainContext);
         CreateChatFormController.setContext(adminDashboardContext);
         loadUi("CreateChatForm");
     }
