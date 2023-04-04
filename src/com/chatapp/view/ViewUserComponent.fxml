@@ -9,7 +9,7 @@
 
 <Pane fx:id="paneUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ViewUserComponentController">
    <children>
-      <VBox fx:id="vBoxUser" alignment="TOP_CENTER" layoutX="1.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="260.0" style="-fx-background-radius: 30; -fx-background-color: #c5c7c7;">
+      <VBox fx:id="vBoxUser" alignment="TOP_CENTER" layoutX="1.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unblockUserOnAction" prefHeight="150.0" prefWidth="260.0" style="-fx-background-radius: 30; -fx-background-color: #c5c7c7;">
          <children>
             <Circle fx:id="userIcon" fill="#e3e8ed" radius="40.0" stroke="GREY" strokeType="INSIDE">
                <VBox.margin>

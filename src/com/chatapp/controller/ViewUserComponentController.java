@@ -13,8 +13,6 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
@@ -22,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -61,9 +60,34 @@ public class ViewUserComponentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         userRemote = Client.getUserRemote();
-    }    
+    }
+    
+    @FXML
+    private void unblockUserOnAction(MouseEvent event) {
+        if (null != user.getDeletedAt()) {
+            try {
+                Optional<ButtonType> result = alert(
+                        Alert.AlertType.CONFIRMATION,
+                        "Confirmation",
+                        "Do you want to unblock this user?",
+                        user.getNickname()+ " [id: " + user.getUserId()+ " |username: " + user.getUsername() + "]"
+                );
 
-    public void setChatData(User user) {
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    if (userRemote.unblockUser(user)) {
+                        paneUser.setCursor(Cursor.DEFAULT);
+                        vBoxUser.setStyle("-fx-background-color: #c5c7c7; -fx-background-radius: 30px");
+                        
+                        setUserData(userRemote.getUser(user));
+                    }
+                }
+            } catch (RemoteException ex) {
+                alert(Alert.AlertType.ERROR, "RemoteException", null, "Failed!");
+            }
+        }
+    }
+
+    public void setUserData(User user) {
         this.user = user;
         ByteArrayInputStream bais = new ByteArrayInputStream(user.getAvatar());
 
@@ -75,31 +99,6 @@ public class ViewUserComponentController implements Initializable {
         if (null != user.getDeletedAt()) {
             paneUser.setCursor(Cursor.HAND);
             vBoxUser.setStyle("-fx-background-color: #e64949; -fx-background-radius: 30px");
-            
-            vBoxUser.setOnMouseClicked(event -> {
-                event.consume();
-                unblockUser();
-            });
-        }
-    }
-    
-    private void unblockUser() {
-        try {
-            Optional<ButtonType> result = alert(
-                    Alert.AlertType.CONFIRMATION,
-                    "Confirmation",
-                    "Do you want to unblock this user?",
-                    user.getNickname()+ " [id: " + user.getUserId()+ " |username: " + user.getUsername() + "]"
-            );
-
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                if (userRemote.unblockUser(user)) {
-                    paneUser.setCursor(Cursor.DEFAULT);
-                    vBoxUser.setStyle("-fx-background-color: #c5c7c7; -fx-background-radius: 30px");
-                }
-            }
-        } catch (RemoteException ex) {
-            Logger.getLogger(ViewUserComponentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

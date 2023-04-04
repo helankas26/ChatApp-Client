@@ -66,7 +66,7 @@ public class ViewUserFormController implements Initializable {
                     Pane paneUser = loder.load();
 
                     ViewUserComponentController userComponentController = loder.getController();
-                    userComponentController.setChatData(user);
+                    userComponentController.setUserData(user);
                     userComponentController.setContext(adminDashboardContext);
 
                     if (column == 2) {
