@@ -7,6 +7,7 @@ package com.chatapp.controller;
 import com.chatapp.client.Client;
 import com.chatapp.pojos.Chat;
 import com.chatapp.rmi.ChatRemote;
+import com.chatapp.rmi.UserRemote;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -27,10 +28,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -40,6 +43,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -69,6 +73,7 @@ public class EditChatFormController implements Initializable {
     
     private static AnchorPane adminDashboardContext;
     private ChatRemote chatRemote;
+    private UserRemote userRemote;
     private Chat chat;
 
     /**
@@ -77,6 +82,7 @@ public class EditChatFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         chatRemote = Client.getChatRemote();
+        userRemote = Client.getUserRemote();
         
         try {
             setCmbChatList();
@@ -113,6 +119,7 @@ public class EditChatFormController implements Initializable {
                 alert(
                         Alert.AlertType.WARNING,
                         "Warning",
+                        null,
                         "Put offline before editing this chat!"
                 );
                 
@@ -134,28 +141,45 @@ public class EditChatFormController implements Initializable {
     }
 
     @FXML
-    private void chatDeleteOnAction(MouseEvent event) {
+    private void chatDeleteOnAction(MouseEvent event) {        
         try {
-            if (chatRemote.deleteChat(chat)) {
+            if (userRemote.getSubscribedUsers(chat).isEmpty()) {
                 Optional<ButtonType> result = alert(
-                        Alert.AlertType.INFORMATION,
-                        "Delete Successful",
-                        "Chat deleted Successfully!"
+                        Alert.AlertType.CONFIRMATION,
+                        "Confirmation",
+                        "Do you want to delete this chat?",
+                        chat.getName()+ " [id: " + chat.getChatId()+ "]"
                 );
                 
                 if (result.isPresent() && result.get() == ButtonType.OK) {
-                    clearFields();
-                    setCmbChatList();
-                } else {
-                    event.consume();
-                    clearFields();
-                    setCmbChatList();
+                    if (chatRemote.deleteChat(chat)) {
+                        
+                        Notifications.create()
+                                .title("Success")
+                                .text("Deleted successfully!")
+                                .owner(adminDashboardContext)
+                                .position(Pos.BOTTOM_RIGHT)
+                                .darkStyle()
+                                .graphic(new ImageView(new Image(getClass().getResource("../asserts/ok.png").toURI().toString())))
+                                .show();
+                        clearFields();
+                        setCmbChatList();
+                    } else {
+                        alert(Alert.AlertType.ERROR, "Exception", null, "Unsuccessful!");
+                    }
                 }
             } else {
-                alert(Alert.AlertType.ERROR, "Exception", "Unsuccessful!");
+                alert(
+                        Alert.AlertType.WARNING,
+                        "Warning",
+                        "This chat can not be deleted!",
+                        "There are users in this chat"
+                );
             }
         } catch (RemoteException ex) {
-            alert(Alert.AlertType.ERROR, "RemoteException", "Failed!");
+            alert(Alert.AlertType.ERROR, "RemoteException", null, "Failed!");
+        } catch (URISyntaxException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -169,6 +193,7 @@ public class EditChatFormController implements Initializable {
                     Optional<ButtonType> result = alert(
                             Alert.AlertType.INFORMATION,
                             "Update Successful",
+                            null,
                             "Chat Updated Successfully!"
                     );
                     
@@ -181,13 +206,13 @@ public class EditChatFormController implements Initializable {
                         setCmbChatList();
                     }
                 } else {
-                    alert(Alert.AlertType.ERROR, "Exception", "Unsuccessful!");
+                    alert(Alert.AlertType.ERROR, "Exception", null, "Unsuccessful!");
                 }
             } catch (RemoteException ex) {
-                alert(Alert.AlertType.ERROR, "RemoteException", "Failed!");
+                alert(Alert.AlertType.ERROR, "RemoteException", null, "Failed!");
             }
         } else {
-            alert(Alert.AlertType.WARNING, "Warning", "All fields are required");
+            alert(Alert.AlertType.WARNING, "Warning", null, "All fields are required");
         }
     }
     
@@ -247,6 +272,8 @@ public class EditChatFormController implements Initializable {
         chatIcon.setFill(null);
         vChat.setVisible(false);
         
+        chat = null;
+        
         disableFields();
     }
     
@@ -273,7 +300,7 @@ public class EditChatFormController implements Initializable {
         }
     }
     
-    private Optional<ButtonType> alert(Alert.AlertType alertType, String title, String contentText) {
+    private Optional<ButtonType> alert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Optional<ButtonType> result = null;
         
         try {
@@ -285,7 +312,7 @@ public class EditChatFormController implements Initializable {
             alert.initModality(Modality.APPLICATION_MODAL);
             alert.initOwner(parentStage);
             alert.setTitle(title);
-            alert.setHeaderText(null);
+            alert.setHeaderText(headerText);
             alert.setContentText(contentText);
             
             result = alert.showAndWait();
