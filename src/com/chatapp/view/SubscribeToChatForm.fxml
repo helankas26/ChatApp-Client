@@ -18,7 +18,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="70.0" layoutY="10.0" prefHeight="100.0" prefWidth="480.0">
          <children>
-            <JFXComboBox fx:id="cmbChatList" prefWidth="250.0">
+            <JFXComboBox fx:id="cmbChatList" onAction="#cmbChatListOnAction" prefWidth="250.0" visibleRowCount="3">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
@@ -31,7 +31,7 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <Circle fx:id="chatIcon" fill="#e3e8ed" onMouseClicked="#imageUploadOnClicked" radius="22.0" stroke="GREY" strokeType="INSIDE">
+                  <Circle fx:id="chatIcon" fill="#e3e8ed" radius="22.0" stroke="GREY" strokeType="INSIDE">
                      <HBox.margin>
                         <Insets left="10.0" right="20.0" />
                      </HBox.margin>
@@ -53,7 +53,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="54.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
-                  <ImageView fitHeight="35.0" fitWidth="35.0" onDragDetected="#chatCloseOnAction" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#chatCloseOnAction" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../asserts/close.png" />
                      </image>
@@ -68,17 +68,17 @@
             </HBox>
          </children>
       </VBox>
-      <JFXListView fx:id="listViewAvailableUser" layoutX="70.0" layoutY="175.0" prefHeight="360.0" prefWidth="225.0" />
-      <JFXListView fx:id="listViewAlreadyUser" layoutX="324.0" layoutY="175.0" prefHeight="360.0" prefWidth="225.0" />
-      <Label layoutX="147.0" layoutY="145.0" text="Add User">
+      <Label fx:id="lblAddUser" layoutX="147.0" layoutY="145.0" text="Add User">
          <font>
             <Font name="Corbel Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="385.0" layoutY="145.0" text="Remove User">
+      <JFXListView fx:id="listViewAvailableUser" focusTraversable="false" layoutX="70.0" layoutY="175.0" prefHeight="360.0" prefWidth="225.0" />
+      <Label fx:id="lblRemoveUser" layoutX="385.0" layoutY="145.0" text="Remove User">
          <font>
             <Font name="Corbel Bold" size="18.0" />
          </font>
       </Label>
+      <JFXListView fx:id="listViewAlreadyUser" focusTraversable="false" layoutX="324.0" layoutY="175.0" prefHeight="360.0" prefWidth="225.0" />
    </children>
 </AnchorPane>

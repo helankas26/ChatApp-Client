@@ -162,6 +162,8 @@ public class AdminDashboardFormController implements Initializable {
 
     @FXML
     private void subscribeToChatOnAction(ActionEvent event) throws IOException {
+        adminDashboardContext.getChildren().remove(adminMainContext);
+        SubscribeToChatFormController.setContext(adminDashboardContext);
         loadUi("SubscribeToChatForm");
     }
     

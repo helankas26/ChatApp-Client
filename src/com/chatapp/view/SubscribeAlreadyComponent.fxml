@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<Label fx:id="lblUser" graphicTextGap="10.0" prefHeight="50.0" prefWidth="185.0" text="Nick Name" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.SubscribeAlreadyComponentController">
+   <graphic>
+      <Circle fx:id="userIcon" fill="#e3e8ed" radius="20.0" stroke="GREY" strokeType="INSIDE" />
+   </graphic>
+   <font>
+      <Font name="System Bold" size="16.0" />
+   </font>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</Label>
