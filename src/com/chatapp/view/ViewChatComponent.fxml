@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -41,24 +42,44 @@
                   </ImageView>
                </children>
             </StackPane>
-            <StackPane layoutX="100.0" layoutY="50.0">
+            <StackPane layoutX="106.0" layoutY="55.0">
                <children>
-                  <ImageView fx:id="btnEnd" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#endChatOnAction" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../asserts/end.png" />
-                     </image>
+                  <JFXButton fx:id="btnEnd" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#endChatOnAction" ripplerFill="#dedede" style="-fx-background-radius: 50;" text="End">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/end.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
-                  </ImageView>
-                  <ImageView fx:id="btnStart" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#startChatOnAction" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../asserts/start.png" />
-                     </image>
+                     <padding>
+                        <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="btnStart" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#startChatOnAction" ripplerFill="#dedede" style="-fx-background-radius: 50;" text="Start">
+                     <graphic>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/start.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
-                  </ImageView>
+                     <padding>
+                        <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+                     </padding>
+                  </JFXButton>
                </children>
             </StackPane>
          </children>

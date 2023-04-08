@@ -7,12 +7,14 @@ package com.chatapp.controller;
 import com.chatapp.client.Client;
 import com.chatapp.pojos.Chat;
 import com.chatapp.rmi.ChatRemote;
+import com.jfoenix.controls.JFXButton;
 import java.io.ByteArrayInputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -20,7 +22,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,9 +42,9 @@ public class ViewChatComponentController implements Initializable {
     @FXML
     private ImageView imgOffline;
     @FXML
-    private ImageView btnEnd;
+    private JFXButton btnEnd;
     @FXML
-    private ImageView btnStart;
+    private JFXButton btnStart;
     
     private AnchorPane adminDashboardContext;
     private ChatRemote chatRemote;
@@ -55,10 +56,10 @@ public class ViewChatComponentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         chatRemote = Client.getChatRemote();
-    }    
-
+    }
+    
     @FXML
-    private void endChatOnAction(MouseEvent event) {
+    private void endChatOnAction(ActionEvent event) {
         try {
             Optional<ButtonType> result = alert(
                     Alert.AlertType.CONFIRMATION,
@@ -83,7 +84,7 @@ public class ViewChatComponentController implements Initializable {
     }
 
     @FXML
-    private void startChatOnAction(MouseEvent event) {
+    private void startChatOnAction(ActionEvent event) {
         try {
             if (chatRemote.isChatOnline()) {
                 alert(Alert.AlertType.WARNING, "Already online", null, "Only one chat at a time!");
