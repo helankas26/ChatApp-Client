@@ -34,7 +34,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" onAction="#userOnAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #1D232A;" text="user">
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" onAction="#userOnAction" prefHeight="60.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #1D232A;" text="user">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -50,7 +50,7 @@
                      </VBox.margin>
                   </JFXButton>
                   <Pane prefHeight="262.0" prefWidth="60.0" VBox.vgrow="ALWAYS" />
-                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="70.0" onAction="#logoutOnAction" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #1D232A;" text="logout">
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="70.0" onAction="#logoutOnAction" prefHeight="60.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #1D232A;" text="logout">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
