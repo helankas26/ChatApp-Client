@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="userDashboardContext" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.UserDashboardFormController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="600.0" prefWidth="60.0" style="-fx-background-color: #1D232A;">
+               <children>
+                  <Pane layoutX="10.0" layoutY="152.0" prefHeight="298.0" prefWidth="60.0" />
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#chatOnAction" prefHeight="60.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #1D232A;" text="chat">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/chat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" onAction="#profileOnAction" prefHeight="60.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #1D232A;" text="user">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/user.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Pane prefHeight="262.0" prefWidth="60.0" VBox.vgrow="ALWAYS" />
+                  <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="70.0" onAction="#logoutOnAction" prefHeight="60.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #1D232A;" text="logout">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="30.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Pane fx:id="paneMenu" layoutX="60.0" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
+               <children>
+                  <StackPane style="-fx-background-color: #242A31;">
+                     <children>
+                        <VBox fx:id="vProfile" alignment="BASELINE_CENTER" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
+                           <children>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#myProfileOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="My Profile" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/my_profile.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="20.0" layoutY="30.0" onAction="#updateProfileOnAction" prefHeight="60.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #56695E;" text="Update" textFill="#d5d5d5">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../asserts/edit_profile.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <Pane fx:id="paneChat" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #242A31 #242A31;">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <TextField fx:id="txtSearchNew" maxWidth="-Infinity" prefWidth="200.0" promptText="Search" style="-fx-background-color: #191d21; -fx-background-radius: 30; -fx-border-radius: 30; -fx-text-fill: #ffffff;" />
+                                          <TextField fx:id="txtSearchExist" maxWidth="-Infinity" prefWidth="200.0" promptText="Search" style="-fx-background-color: #191d21; -fx-background-radius: 30; -fx-border-radius: 30; -fx-text-fill: #ffffff;" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </VBox>
+                              <Separator layoutX="1.0" layoutY="40.0" prefHeight="0.0" prefWidth="218.0" style="-fx-background-color: #242A31 #242A31;" />
+                              <ScrollPane hbarPolicy="NEVER" layoutY="40.0" prefHeight="560.0" prefWidth="220.0" style="-fx-background-color: rgba(0,0,0,0);" vbarPolicy="NEVER">
+                                 <content>
+                                    <VBox fx:id="vChat" alignment="BASELINE_CENTER" prefHeight="560.0" prefWidth="220.0" style="-fx-background-color: #242A31;" />
+                                 </content>
+                              </ScrollPane>
+                              <StackPane layoutX="155.0" layoutY="525.0">
+                                 <children>
+                                    <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#backOnAction" ripplerFill="#242a31" style="-fx-background-radius: 50;" text="Back">
+                                       <graphic>
+                                          <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../asserts/back.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <padding>
+                                          <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+                                       </padding>
+                                    </JFXButton>
+                                    <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#newChatOnAction" ripplerFill="#242a31" style="-fx-background-radius: 50;" text="New">
+                                       <graphic>
+                                          <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../asserts/new_chat.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <padding>
+                                          <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+                                       </padding>
+                                    </JFXButton>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </children>
+            </Pane>
+            <Pane layoutX="280.0" prefHeight="40.0" prefWidth="620.0" style="-fx-background-color: #cccccc;">
+               <children>
+                  <Label fx:id="lblDate" layoutX="86.0" layoutY="12.0" text="2023-04-08">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTime" layoutX="500.0" layoutY="11.0" text="08:10:12">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <AnchorPane fx:id="userMainContext" layoutX="280.0" layoutY="40.0" prefHeight="560.0" prefWidth="620.0" style="-fx-background-color: #EBEBEB;">
+               <children>
+                  <ImageView fx:id="imgUserMainContext" fitHeight="560.0" fitWidth="620.0" opacity="0.09" pickOnBounds="true">
+                     <image>
+                        <Image url="@../asserts/admin_background.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
