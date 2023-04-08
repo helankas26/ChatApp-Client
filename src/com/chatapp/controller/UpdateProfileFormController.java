@@ -96,7 +96,7 @@ public class UpdateProfileFormController implements Initializable {
                             Alert.AlertType.INFORMATION,
                             "Update Successful",
                             null,
-                            "Chat Updated Successfully!"
+                            "Profile Updated Successfully!"
                     );
                 }
             } catch (ConstraintViolationException ex) {
