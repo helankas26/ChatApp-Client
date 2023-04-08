@@ -51,7 +51,7 @@
                   </Label>
                </children>
             </HBox>
-            <ScrollPane prefHeight="440.0" prefWidth="580.0" style="-fx-background-color: rgba(0,0,0,0);">
+            <ScrollPane prefHeight="440.0" prefWidth="580.0" style="-fx-background-color: rgba(0,0,0,0);" vbarPolicy="ALWAYS">
                <content>
                   <VBox fx:id="vBoxUserBlock" prefHeight="400.0" prefWidth="564.0" spacing="5.0" />
                </content>

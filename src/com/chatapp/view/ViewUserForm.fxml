@@ -13,7 +13,8 @@
    <children>
       <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="20.0" layoutY="25.0" prefHeight="25.0" prefWidth="250.0" promptText="Search user" />
       <Pane layoutX="420.0" layoutY="35.0" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 30; -fx-background-color: #e64949;" />
-      <ScrollPane layoutX="20.0" layoutY="100.0" prefHeight="440.0" prefWidth="580.0" style="-fx-background-color: rgba(0,0,0,0);">
+      <Label layoutX="450.0" layoutY="36.0" text="Blocked user" />
+      <ScrollPane layoutX="20.0" layoutY="100.0" prefHeight="440.0" prefWidth="580.0" style="-fx-background-color: rgba(0,0,0,0);" vbarPolicy="ALWAYS">
          <content>
             <GridPane fx:id="gridPaneUser">
                <rowConstraints>
@@ -25,6 +26,5 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Label layoutX="450.0" layoutY="36.0" text="Blocked user" />
    </children>
 </AnchorPane>

@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="adminDashboardContext" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.AdminDashboardFormController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="loginContext" prefHeight="600.0" prefWidth="900.0">
+      <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0">
          <children>
             <VBox alignment="CENTER" prefHeight="600.0" prefWidth="60.0" style="-fx-background-color: #1D232A;">
                <children>
@@ -68,7 +68,7 @@
                </children></VBox>
             <Pane fx:id="paneMenu" layoutX="60.0" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
                <children>
-                  <StackPane layoutX="-4.599999904632568" style="-fx-background-color: #242A31;">
+                  <StackPane style="-fx-background-color: #242A31;">
                      <children>
                         <VBox fx:id="vUser" alignment="BASELINE_CENTER" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #242A31;">
                            <children>

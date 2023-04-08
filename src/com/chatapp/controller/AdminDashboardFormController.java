@@ -41,8 +41,6 @@ import javafx.util.Duration;
 public class AdminDashboardFormController implements Initializable {
 
     @FXML
-    private AnchorPane loginContext;
-    @FXML
     private VBox vUser;
     @FXML
     private VBox vChat;

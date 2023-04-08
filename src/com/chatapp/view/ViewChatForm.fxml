@@ -12,16 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="620.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ViewChatFormController">
    <children>
-      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="20.0" layoutY="25.0" prefHeight="25.0" prefWidth="250.0" promptText="Search user" />
-      <ScrollPane layoutX="20.0" layoutY="100.0" prefHeight="440.0" prefWidth="580.0" style="-fx-background-color: rgba(0,0,0,0);">
-         <content>
-            <GridPane fx:id="gridPaneChat">
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </content>
-      </ScrollPane>
+      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="20.0" layoutY="25.0" prefHeight="25.0" prefWidth="250.0" promptText="Search chat" />
       <JFXButton buttonType="RAISED" layoutX="415.0" layoutY="27.0" onAction="#putChatOfflineOnAction" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #e64949;" text="Put Offline" textFill="#ededed">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -33,5 +24,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <ScrollPane layoutX="20.0" layoutY="100.0" prefHeight="440.0" prefWidth="580.0" style="-fx-background-color: rgba(0,0,0,0);" vbarPolicy="ALWAYS">
+         <content>
+            <GridPane fx:id="gridPaneChat">
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
