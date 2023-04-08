@@ -130,7 +130,9 @@ public class UserDashboardFormController implements Initializable {
     }
 
     @FXML
-    private void myProfileOnAction(ActionEvent event) {
+    private void myProfileOnAction(ActionEvent event) throws IOException {
+        userDashboardContext.getChildren().remove(userMainContext);
+        loadUi("ViewProfileForm");
     }
 
     @FXML

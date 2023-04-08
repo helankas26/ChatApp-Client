@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="620.0" style="-fx-background-color: #EBEBEB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ViewProfileFormController">
+   <children>
+      <Pane layoutX="70.0" layoutY="25.0" prefHeight="510.0" prefWidth="480.0">
+         <children>
+            <Circle fx:id="proPic" fill="#e3e8ed" layoutX="240.0" layoutY="150.0" radius="55.0" stroke="GREY" strokeType="INSIDE" />
+            <JFXTextField fx:id="txtId" editable="false" labelFloat="true" layoutX="115.0" layoutY="223.0" prefWidth="250.0" promptText="ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtEmail" editable="false" labelFloat="true" layoutX="115.0" layoutY="279.0" prefWidth="250.0" promptText="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtUsername" editable="false" labelFloat="true" layoutX="115.0" layoutY="331.0" prefWidth="250.0" promptText="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNickName" editable="false" labelFloat="true" layoutX="115.0" layoutY="385.0" prefWidth="250.0" promptText="Nick Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
