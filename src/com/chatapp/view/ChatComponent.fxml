@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #56695E; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chatapp.controller.ChatComponentController">
+   <children>
+      <Circle fx:id="chatIcon" fill="#e3e8ed" layoutX="25.0" layoutY="30.0" radius="20.0" stroke="GREY" strokeType="INSIDE" />
+      <Label fx:id="lblChatName" layoutX="50.0" layoutY="2.5" prefHeight="26.0" prefWidth="145.0" text="Chat Name">
+         <font>
+            <Font name="Ebrima Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgOnline" fitHeight="18.0" fitWidth="18.0" layoutX="25.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/online.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnUnsubscribe" buttonType="RAISED" layoutX="92.5" layoutY="28.0" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: #c92c2c;" text="Unsubscribe" textFill="#ededed">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+   <padding>
+      <Insets bottom="30.0" top="30.0" />
+   </padding>
+</Pane>

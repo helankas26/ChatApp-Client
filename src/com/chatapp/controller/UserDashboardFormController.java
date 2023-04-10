@@ -4,13 +4,23 @@
  */
 package com.chatapp.controller;
 
+import com.chatapp.client.Client;
+import com.chatapp.pojos.Chat;
+import com.chatapp.pojos.Subscription;
+import com.chatapp.pojos.SubscriptionId;
+import com.chatapp.rmi.ChatRemote;
+import com.chatapp.rmi.SubscriptionRemote;
 import com.chatapp.util.Cookie;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
@@ -20,6 +30,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -63,9 +74,15 @@ public class UserDashboardFormController implements Initializable {
     private AnchorPane userMainContext;
     @FXML
     private ImageView imgUserMainContext;
+    @FXML
+    private JFXButton btnBack;
+    @FXML
+    private JFXButton btnNewChat;
     
     private boolean isChatActive;
     private boolean isProfileActive;
+    private ChatRemote chatRemote;
+    private SubscriptionRemote subscriptionRemote;
 
     /**
      * Initializes the controller class.
@@ -77,12 +94,33 @@ public class UserDashboardFormController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        chatRemote = Client.getChatRemote();
+        subscriptionRemote = Client.getSubscriptionRemote();
+        
+        setSubscribedVChat("");
+        
         initializeDate();
         initializeTime();
         vProfile.setVisible(false);
         
+        btnBack.setVisible(false);
+        txtSearchNew.setVisible(false);
+        btnNewChat.setVisible(true);
+        txtSearchExist.setVisible(true);
+        
         isChatActive = true;
         isProfileActive = false;
+        
+        txtSearchExist.textProperty()
+               .addListener((observable, oldValue, newValue) -> {
+                   setSubscribedVChat(newValue);
+               });
+        
+        txtSearchNew.textProperty()
+               .addListener((observable, oldValue, newValue) -> {
+                   setToSubscribeVChat(newValue);
+               });
     }    
 
     @FXML
@@ -114,6 +152,7 @@ public class UserDashboardFormController implements Initializable {
         Optional<ButtonType> result = alert(
                 Alert.AlertType.CONFIRMATION,
                 "Logout",
+                null,
                 "Do you really want to logout?"
         );
                 
@@ -144,10 +183,22 @@ public class UserDashboardFormController implements Initializable {
 
     @FXML
     private void backOnAction(ActionEvent event) {
+        btnBack.setVisible(false);
+        txtSearchNew.setVisible(false);
+        btnNewChat.setVisible(true);
+        txtSearchExist.setVisible(true);
+        txtSearchNew.clear();
+        setSubscribedVChat("");
     }
 
     @FXML
     private void newChatOnAction(ActionEvent event) {
+        btnNewChat.setVisible(false);
+        txtSearchExist.setVisible(false);
+        btnBack.setVisible(true);
+        txtSearchNew.setVisible(true);
+        txtSearchExist.clear();
+        setToSubscribeVChat("");
     }
     
     private void setUi(String location) throws IOException {
@@ -202,7 +253,135 @@ public class UserDashboardFormController implements Initializable {
         }
     }
     
-    private Optional<ButtonType> alert(Alert.AlertType alertType, String title, String contentText) {
+    private void setSubscribedVChat(String search) {
+        vChat.getChildren().clear();
+        search = search.toLowerCase();
+        
+        try {
+            for (Chat chat : chatRemote.getSubscribedChats(Cookie.getLoginUser())) {
+                if (
+                        chat.getName().toLowerCase().contains(search) ||
+                        chat.getDescription().toLowerCase().contains(search)
+                ) {
+                    FXMLLoader loder = new FXMLLoader(getClass().getResource("../view/ChatComponent.fxml"));
+                    Pane chatPane = loder.load();
+                    
+                    chatPane.setOnMouseClicked((event) -> {
+                        try {
+                            event.consume();
+                            loadUi("ConversationForm");
+                        } catch (IOException ex) {
+                            System.out.println(ex.getMessage());
+                        }
+                    });
+                    
+                    ChatComponentController chatComponentController = loder.getController();
+                    chatComponentController.setUserData(chat);
+                    
+                    chatComponentController.getBtnUnsubscribe().setOnMouseClicked((event) -> {
+                        event.consume();
+                        unsubscribe(chat);         
+                    });
+
+                    vChat.getChildren().add(chatPane);
+                    VBox.setMargin(chatPane, new Insets(0, 0, 5, 0));
+                }
+            }
+        } catch (RemoteException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void unsubscribe(Chat chat) {
+        try {
+            Optional<ButtonType> result = alert(
+                    Alert.AlertType.CONFIRMATION,
+                    "Confirmation",
+                    "Do you want to unsubscribe?",
+                    chat.getName() + " [id: " + chat.getChatId() + "]"
+            );
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                Subscription subscription = new Subscription();
+                SubscriptionId subscriptionId = new SubscriptionId();
+                subscriptionId.setChatId(chat.getChatId());
+                subscriptionId.setUserId(Cookie.getLoginUser().getUserId());
+                subscription.setId(subscriptionId);
+
+                if (subscriptionRemote.unsubscribe(subscription)) {
+                    txtSearchExist.clear();
+                    setSubscribedVChat("");
+                }
+            }
+        } catch (RemoteException ex) {
+            alert(Alert.AlertType.ERROR, "RemoteException", null, "Failed!");
+        } 
+    }
+    
+    private void setToSubscribeVChat(String search) {
+        vChat.getChildren().clear();
+        search = search.toLowerCase();
+        
+        try {
+            for (Chat chat : chatRemote.getToSubscribeChats(Cookie.getLoginUser())) {
+                if (
+                        chat.getName().toLowerCase().contains(search) ||
+                        chat.getDescription().toLowerCase().contains(search)
+                ) {
+                    FXMLLoader loder = new FXMLLoader(getClass().getResource("../view/ChatComponent.fxml"));
+                    Pane chatPane = loder.load();
+                    
+                    chatPane.setOnMouseClicked((event) -> {
+                        event.consume();
+                        subscribe(chat);
+                    });
+
+                    ChatComponentController chatComponentController = loder.getController();
+                    chatComponentController.setUserData(chat);
+                    
+                    chatComponentController.getBtnUnsubscribe().setVisible(false);
+
+                    vChat.getChildren().add(chatPane);
+                    VBox.setMargin(chatPane, new Insets(0, 0, 5, 0));
+                }
+            }
+        } catch (RemoteException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void subscribe(Chat chat) {
+        try {
+            Optional<ButtonType> result = alert(
+                    Alert.AlertType.CONFIRMATION,
+                    "Confirmation",
+                    "Do you want to subscribe?",
+                    chat.getName() + " [id: " + chat.getChatId() + "]"
+            );
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                Subscription subscription = new Subscription();
+                SubscriptionId subscriptionId = new SubscriptionId();
+                subscriptionId.setChatId(chat.getChatId());
+                subscriptionId.setUserId(Cookie.getLoginUser().getUserId());
+                subscription.setId(subscriptionId);
+                subscription.setRegisteredAt(Date.from(Instant.now()));
+
+                if (subscriptionRemote.subscribe(subscription)) {
+                    txtSearchNew.clear();
+                    setToSubscribeVChat("");
+                }
+            }
+        } catch (RemoteException ex) {
+            alert(Alert.AlertType.ERROR, "RemoteException", null, "Failed!");
+        }
+    }
+    
+    private Optional<ButtonType> alert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Optional<ButtonType> result = null;
         
         try {
@@ -214,7 +393,7 @@ public class UserDashboardFormController implements Initializable {
             alert.initModality(Modality.APPLICATION_MODAL);
             alert.initOwner(parentStage);
             alert.setTitle(title);
-            alert.setHeaderText(null);
+            alert.setHeaderText(headerText);
             alert.setContentText(contentText);
             
             result = alert.showAndWait();
